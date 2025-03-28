@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <span>Pulse Store Web</span>
+  <span class="spacer"></span> <!-- Adiciona espaço entre o título e o ícone -->
+  
+  <a [routerLink]="['/carrinho']">
+      <mat-icon matBadge="3" matBadgeColor="accent" aria-hidden="false" class="cart-icon">shopping_cart</mat-icon>
+  </a>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet> <!-- Aqui é onde os componentes das rotas serão renderizados -->
+</div>

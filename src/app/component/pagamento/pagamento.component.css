@@ -1,0 +1,65 @@
+.table-container {
+    margin: 20px;
+    max-width: 800px;
+  }
+  
+  .mat-table {
+    width: 100%;
+    border-collapse: separate; /* Assegura que o espaçamento das bordas seja aplicado */
+    border-spacing: 0 8px; /* Adiciona espaço entre as linhas */
+  }
+  
+  .mat-header-cell {
+    background-color: #f1f1f1; /* Cor de fundo para cabeçalho */
+    font-weight: bold; /* Deixa o texto mais forte */
+  }
+  
+  .mat-cell {
+    padding: 16px; /* Espaçamento interno nas células */
+    background-color: #ffffff; /* Cor de fundo para as células */
+  }
+  
+  .mat-cell:hover {
+    background-color: #f9f9f9; /* Efeito de hover para as células */
+  }
+  
+  .total-container {
+    padding: 1%;
+}
+
+.total-row {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaço entre os itens */
+    padding: 1%;
+}
+
+.total-row span {
+    flex: 1; /* Cada span ocupa parte igual do espaço */
+}
+
+.total-row span:last-child {
+    text-align: right; /* Alinhando o valor à direita */
+}
+
+.afastaTexto{
+  /* margin-left: 50%; */
+}
+
+.card {
+  cursor: pointer;  /* Aponta que o card é clicável */
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Bordas arredondadas */
+  transition: background-color 0.3s ease; /* Suaviza a transição */
+  width: 200px;
+  height: 300px;
+}
+
+.card.selected {
+  background-color: #f0f0f0;  /* Cor de fundo quando selecionado */
+  border-color: #007bff;  /* Cor da borda quando selecionado */
+}
+
+.card:hover {
+  background-color: #f9f9f9; /* Cor de fundo ao passar o mouse */
+}

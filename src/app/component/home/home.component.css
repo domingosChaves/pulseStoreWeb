@@ -1,0 +1,16 @@
+/* toolbar.component.css */
+
+mat-toolbar {
+  display: flex; /* Define o layout como flexbox */
+  justify-content: space-between; /* Espaça os itens para as extremidades */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+.spacer {
+  flex: 1; /* Faz com que o espaço entre o título e o carrinho se expanda */
+}
+
+/* Estilo adicional para o ícone do carrinho, se necessário */
+.cart-icon {
+  cursor: pointer; /* Muda o cursor quando o mouse passa sobre o ícone */
+}

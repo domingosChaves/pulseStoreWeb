@@ -1,0 +1,114 @@
+<div class="pagamento-container" style="padding: 1%;margin: auto;">
+    <h2>Resumo do Pagamento</h2>
+
+    <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="produtos" class="mat-table">
+
+            <!-- Nome do Produto -->
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome do Produto </th>
+                <td mat-cell *matCellDef="let produto"> {{produto.produto.nome}} </td>
+            </ng-container>
+
+            <!-- Preço do Produto -->
+            <ng-container matColumnDef="preco">
+                <th mat-header-cell *matHeaderCellDef> Preço </th>
+                <td mat-cell *matCellDef="let produto"> {{produto.produto.preco | currency: 'BRL':''}} </td>
+            </ng-container>
+
+            <!-- Quantidade -->
+            <ng-container matColumnDef="quantidade">
+                <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+                <td mat-cell *matCellDef="let produto"> {{produto.quantidade}} </td>
+            </ng-container>
+            <!-- Quantidade -->
+            <ng-container matColumnDef="totalItem">
+                <th mat-header-cell *matHeaderCellDef> Total Item </th>
+                <td mat-cell *matCellDef="let produto"> {{calcularTotalItem(produto.produto.preco,produto.quantidade) |
+                    currency: 'BRL':'' }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['nome', 'preco', 'quantidade','totalItem']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['nome', 'preco', 'quantidade','totalItem'];"></tr>
+
+        </table>
+        <!-- Total Geral -->
+        <div class="total-container">
+            <div class="total-row">
+                <span class="afastaTexto">Total Produtos:</span>
+                <span>{{calcularTotalItens() | currency: 'BRL':''}}</span>
+            </div>
+            <div class="total-row">
+                <span class="afastaTexto">Frete:</span>
+                <span>{{ frete | currency: 'BRL':''}}</span>
+            </div>
+            <div class="total-row">
+                <span class="afastaTexto">Total Geral:</span>
+                <span style="font-weight: bold;">{{calcularTotal() | currency: 'BRL':''}}</span>
+            </div>
+        </div>
+
+
+    </div>
+    <h2>Informações de Entrega</h2>
+
+    <div class="table-container mat-elevation-z8" style="padding: 1%;">
+        <p>
+            {{ cliente.infoParaNotaFiscal }}
+        </p>
+    </div>
+
+
+    <h2>Transportadora</h2>
+
+    <div class="table-container mat-elevation-z8" style="padding: 1%;">
+        <p>
+            {{ transportadora.nome }}
+        </p>
+    </div>
+
+
+    <h2>Escolha o Método de Pagamento</h2>
+    <div class="opcoes-pagamento">
+        <mat-grid-list cols="5">
+            <mat-grid-tile>
+                <div class="card" (click)="selecionarPagamento('cartao')"
+                    [class.selected]="metodoPagamento === 'cartao'">
+                    <img width="150"
+                        src="data:image/png;base64,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"
+                        alt="">
+                    <h4>Cartão</h4>
+                    <p>Pagamento via cartão de crédito.</p>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="card" (click)="selecionarPagamento('boleto')"
+                    [class.selected]="metodoPagamento === 'boleto'">
+                    <img width="150"
+                        src="data:image/png;base64,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"
+                        alt="">
+                    <h4>Boleto</h4>
+                    <p>Pagamento via boleto bancário.</p>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="card" (click)="selecionarPagamento('pix')" [class.selected]="metodoPagamento === 'pix'">
+                    <img width="150"
+                        src="data:image/png;base64,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"
+                        alt="">
+                    <h4>PIX</h4>
+                    <p>Pagamento via transferência instantânea.</p>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <br><br>
+     <!-- Botão de Finalização da Compra -->
+     <button *ngIf="metodoPagamento" (click)="finalizarCompra()" 
+     style="margin-top: 15px;" mat-raised-button color="primary">
+     Finalizar Compra
+ </button>
+</div>
