@@ -1,0 +1,35 @@
+<div class="table-container mat-elevation-z8" style="padding: 2%;">
+  <h2>Resumo do Carrinho</h2> <!-- Título da tabela -->
+
+  <table mat-table [dataSource]="produtos" class="mat-table">
+
+    <!-- Nome do Produto -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome do Produto </th>
+      <td mat-cell *matCellDef="let produto"> {{produto.nomeProduto}} </td>
+    </ng-container>
+
+    <!-- Preço do Produto -->
+    <ng-container matColumnDef="preco">
+      <th mat-header-cell *matHeaderCellDef> Preço </th>
+      <td mat-cell *matCellDef="let produto"> {{produto.precoProduto | currency: 'BRL':'symbol'}} </td>
+    </ng-container>
+
+    <!-- Quantidade -->
+    <ng-container matColumnDef="quantidade">
+      <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+      <td mat-cell *matCellDef="let produto"> {{produto.quantidade}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['nome', 'preco', 'quantidade']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['nome', 'preco', 'quantidade'];"></tr>
+
+  </table>
+
+  <div class="total-container">
+    <h3>Total de Itens: {{ totalQuantidade }}</h3>
+    <h3>Total do Valor: {{ totalValor | currency: 'BRL':'symbol' }}</h3>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="confirmarCompra()">Confirmar Compra</button>
+</div>
