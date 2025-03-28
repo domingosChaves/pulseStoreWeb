@@ -1,27 +1,85 @@
 # PulseStoreWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 11.1.2.
 
-## Development server
+## Descrição do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+O **Pulse Store Web** é uma aplicação de e-commerce que implementa um sistema de checkout para vendas online. O projeto permite que os usuários adicionem produtos ao carrinho e realizem compras, gerando automaticamente a documentação fiscal.
 
-## Code scaffolding
+## Estrutura do Projeto
+PULSESSTOREWEB/
+|-- e2e/
+|-- node_modules/
+|-- src/
+|-- app/
+|-- component/
+|-- carrinho/
+|-- cliente/
+|-- confirm-dialog/
+|-- endereco-entrega/
+|-- home/
+|-- item-carrinho/
+|-- pagamento/
+|-- produto/
+|-- produtos/
+|-- usuario/
+|-- enum/
+|-- papel.enum.ts
+|-- model/
+|-- carrinho.model.ts
+|-- carrinhoRequest.model.ts
+|-- cliente.model.ts
+|-- itemCarrinho.model.ts
+|-- pedido.model.ts
+|-- produto.model.ts
+|-- transportadora.model.ts
+|-- usuario.model.ts
+|-- services/
+|-- carrinho/
+|-- cliente/
+|-- pedido/
+|-- produto/
+|-- transportadora/
+|-- usuario/
+|-- app.component.html
+|-- app.component.spec.ts
+|-- app.component.css
+|-- app.module.ts
+|-- assets/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Servidor de Desenvolvimento
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Execute `ng serve` para iniciar um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se você alterar algum dos arquivos de origem.
 
-## Running unit tests
+## Geração de Componentes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para gerar um novo componente, execute:
 
-## Running end-to-end tests
+ng generate component component-name
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Você também pode usar os seguintes comandos para gerar diretamente outros itens:
 
-## Further help
+ng generate directive|pipe|service|class|guard|interface|enum|module
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Construção
+Execute ng build para construir o projeto. Os artefatos de construção serão armazenados no diretório dist/. Use a flag --prod para uma construção de produção.
+
+Execução de Testes Unitários
+Para executar os testes unitários, utilize:
+ng test
+
+Execução de Testes End-to-End
+Para executar os testes end-to-end, utilize:
+ng e2e
+
+Documentação da API
+ Importe no postman a collection Pulse Store Teste.postman_collection.json diponivel na raiz do projeto
+
+ Para que o projeto funcione, é preciso subir o backend e carregar os produtos e a transportadora.
+ Rodar no postman 
+  - [POST] Cadastrar Produto 
+  - [POST] Criar Transportadora
+
+ Containerização
+O projeto está configurado para ser dockerizado, e a imagem será disponibilizada no DockerHub. Instruções para rodar a aplicação em contêineres Docker estão inclusas no arquivo Dockerfile e docker-compose.yml.
