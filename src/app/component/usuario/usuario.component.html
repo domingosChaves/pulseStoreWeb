@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title>Registrar Novo Usuário</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="registrar()" #usuarioForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput [(ngModel)]="usuario.nome" name="nome" required >
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="usuario.email" name="email" required email>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput [(ngModel)]="usuario.senha" name="senha" type="password" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Papel</mat-label>
+          <mat-select [(ngModel)]="usuario.papel" name="papel" required>
+            <mat-option *ngFor="let papel of papeis" [value]="papel">{{ papel }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="usuarioForm.invalid">Registrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
