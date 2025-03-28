@@ -1,0 +1,53 @@
+.product-card {
+  max-width: 300px;
+  margin: 20px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.current-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: green;
+}
+
+.discount {
+  font-size: 0.9rem;
+  color: red;
+}
+
+.installment {
+  font-size: 0.9rem;
+}
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px; /* Espaço acima */
+}
+
+.quantity-input {
+  width: 50px; /* Define a largura do campo de quantidade */
+  text-align: center; /* Centraliza o texto */
+  margin: 0 10px; /* Espaço lateral */
+}
+
+.add-to-cart-button {
+  background-color: blue; /* Cor original */
+  color: white;
+}
+
+.remove-from-cart-button {
+  background-color: red; /* Cor quando no carrinho */
+  color: white;
+}

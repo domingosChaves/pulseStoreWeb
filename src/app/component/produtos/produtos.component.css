@@ -1,0 +1,11 @@
+.produtos-container {
+    display: flex;               /* Ativar o modelo flexbox */
+    flex-wrap: wrap;            /* Permitir quebra de linha dos itens, se necessário */
+    justify-content: space-around; /* Alinha os itens horizontalmente com espaço */
+  }
+  
+  .produto-item {
+    flex: 1 1 200px;            /* Flex-grow, flex-shrink, flex-basis */
+    margin: 10px;               /* Espaço entre os produtos */
+    min-width: 150px;           /* Largura mínima para os itens */
+  }

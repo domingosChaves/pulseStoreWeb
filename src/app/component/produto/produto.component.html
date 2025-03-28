@@ -1,0 +1,24 @@
+
+<mat-card class="product-card">
+  <img mat-card-image [src]="product.imageUrl" alt="Imagem do produto" />
+  
+  <mat-card-content>
+    <h3 class="product-title">{{ produto.nome }}</h3>
+    
+    <p class="current-price">R$ {{ produto.preco | number: '1.2-2' }} <span class="discount">{{ product.discount }}</span></p>
+    
+    <p class="installment">{{ produto.descricao }}</p>
+    
+    <div class="quantity-container">
+      <button mat-button (click)="decreaseQuantity()">-</button>
+      <input matInput type="number" [(ngModel)]="quantity" [max]="produto.estoque" min="1" readonly class="quantity-input" />
+      <button mat-button (click)="increaseQuantity()">+</button>
+    </div>
+    
+    <button 
+    mat-raised-button 
+    [ngClass]="{'add-to-cart-button': !inCart, 'remove-from-cart-button': inCart}" 
+    (click)="addToCart()">
+    {{ inCart ? 'Remover do Carrinho' : 'Adicionar ao Carrinho' }}
+  </button>  </mat-card-content>
+</mat-card>
