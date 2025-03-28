@@ -1,5 +1,11 @@
 <div class="produtos-container">
-    <div *ngFor="let product of products" class="produto-item">
-      <app-produto [produto]="product"></app-produto>  
-    </div>
+  <div *ngFor="let product of products" class="produto-item">
+    <app-produto [produto]="product"></app-produto>
   </div>
+  
+
+</div>
+<a [routerLink]="['/carrinho']"><button style="margin-top: 15px;" mat-raised-button color="primary">
+      Vizualizar Carrinho <mat-icon matBadgeColor="accent" aria-hidden="false"
+        class="cart-icon">shopping_cart</mat-icon>
+    </button></a>

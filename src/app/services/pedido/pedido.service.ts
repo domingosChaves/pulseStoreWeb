@@ -23,4 +23,12 @@ export class PedidoService {
   obterPedido(pedidoId: number): Observable<Pedido> {
       return this.http.get<Pedido>(`${this.apiUrl}/${pedidoId}`);
   }
+
+  // Método para baixar o PDF
+  downloadPdf(pedidoId: number): Observable<Blob> {
+    return this.http.get(`${environment.HOST_API}/nfe/download-pdf/${pedidoId}`, {
+      responseType: 'blob' // Indica que esperamos um Blob na resposta
+    });
+  }
+
 }

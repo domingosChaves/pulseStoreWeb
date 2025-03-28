@@ -37,6 +37,7 @@ import { PagamentoComponent } from './component/pagamento/pagamento.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/usuarios', pathMatch: 'full' }, // Rota padrão redireciona para 'usuarios'
   { path: 'clientes', component: ClienteComponent },
   { path: 'usuarios', component: UsuarioComponent },
   { path: 'carrinho', component: CarrinhoComponent },
@@ -45,9 +46,6 @@ const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'endereco', component: EnderecoEntregaComponent },
   { path: 'pagamento/:pedidoId', component: PagamentoComponent },
-
-
-
 
   // outras rotas que possa pode ter
 ];

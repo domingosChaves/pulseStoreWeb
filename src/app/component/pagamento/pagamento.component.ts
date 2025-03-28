@@ -6,21 +6,6 @@ import { Transportadora } from 'src/app/model/transportadora.model';
 import { CarrinhoService } from 'src/app/services/carrinho/carrinho.service';
 import { PedidoService } from 'src/app/services/pedido/pedido.service';
 
-interface Produto {
-  nome: string;
-  quantidade: number;
-  preco: number;
-  total: number;
-}
-
-interface Endereco {
-  logradouro: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-  cep: string;
-}
 
 @Component({
   selector: 'app-pagamento',
@@ -54,25 +39,17 @@ export class PagamentoComponent implements OnInit {
       this.cliente = data.cliente;
       this.transportadora = data.transportadora;
       this.produtos = data.carrinho.itens;
+      this.frete = data.totalFrete;
     })
   }
 
 
-  frete: number = 20; // Valor do frete
-  endereco: Endereco = {
-    logradouro: 'Rua Exemplo',
-    numero: '123',
-    bairro: 'Centro',
-    cidade: 'São Paulo',
-    estado: 'SP',
-    cep: '01001-000'
-  };
-
+  frete: number; // Valor do frete
   metodoPagamento: string | null = null;
 
   calcularTotal(): number {
     const totalProdutos = this.produtos.reduce((acc, produto) => {
-      const totalItem = this.calcularTotalItem(produto.precoProduto, produto.quantidade); // Calcula o total de cada item
+      const totalItem = this.calcularTotalItem(produto.produto.preco, produto.quantidade); // Calcula o total de cada item
       return acc + totalItem; // Soma o total de cada item ao acumulador
     }, 0);
 
@@ -80,7 +57,7 @@ export class PagamentoComponent implements OnInit {
   }
   calcularTotalItens(): number {
     return this.produtos.reduce((acc, produto) => {
-      const totalItem = this.calcularTotalItem(produto.precoProduto, produto.quantidade);
+      const totalItem = this.calcularTotalItem(produto.produto.preco, produto.quantidade);
       return acc + totalItem;  // Soma o total de cada item ao acumulador
     }, 0);
   }
@@ -91,5 +68,20 @@ export class PagamentoComponent implements OnInit {
 
   selecionarPagamento(metodo: string): void {
     this.metodoPagamento = metodo;
+  }
+
+  finalizarCompra(){
+    this.pedidoService.downloadPdf(this.pedidoId).subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'nfe.pdf'; // Nome do arquivo que será baixado
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url); // Libera a URL após o download
+    }, (error) => {
+      console.error('Error downloading PDF', error);
+    });
   }
 }
